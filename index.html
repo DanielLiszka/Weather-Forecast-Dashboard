@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1"/>
+    <title>Weather Forecast Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./assets/styles/style.css">
+</head>
+<body>
+    <div class="container-fluid mt-2 text-center p-2" id="top-header">
+        <h1> <b>Weather Forecast Dashboard</b></h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 bg-light">
+                <h4 class="pt-1"><b>Enter a City to Search:</b></h4>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control"id="search-city" aria-label="City Search" aria-describedby="search-button">
+                    <div class="input-group-append">
+                        <button class=" btn bg-secondary text-light" id="search-button"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+                <button class=" btn btn-secondary" type="button" id="clear-history">Remove History</button>
+                <ul class="list-group">
+
+                </ul>
+            </div>   
+            <div class="col-sm-8" id="parent-div">
+                <div class="row ml-2 border">
+                    <div class="col-sm-12" id="current-weather">
+                        <h3 class="city-name mb-1 mt-2 bolder" id="current-city"></h3>
+                        <p>Temperature:<span class="current" id="temperature"></span></p>
+                        <p>Wind MPH:<span class="current" id="wind-speed"></span></p>
+                        <p>Humidity %:<span class="current" id="humidity"></span></p> 
+                        <p>UV rating:<span class="current py-2 px-2 text-white" id="uv-index"></span></p> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>

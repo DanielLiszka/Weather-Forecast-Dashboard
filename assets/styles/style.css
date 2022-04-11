@@ -1,0 +1,31 @@
+
+*{
+    box-sizing: border-box;
+    
+}
+
+body {
+    
+    font-size: 16px;
+    font-family: Sans-serif, Arial, Verdana;
+    
+}
+h3{
+    font-weight: bold;
+}
+.forecast{
+    
+    font-size: 1rem;
+}
+span{
+    font-size: 1em;
+}
+
+li:hover{
+    background-color: rgb(75, 85, 96);
+}
+
+#top-header{
+    background-color:grey ;
+    color: white;
+}
