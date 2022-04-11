@@ -1,3 +1,4 @@
+// API Key and Document Selectors
 var APIKey="cc19080514601fa86afcd7346a5baad5";
 var city="";
 var SelectedCity = $("#search-city");
@@ -9,6 +10,7 @@ var currentTemperature = $("#temperature");
 var currentWSpeed=$("#wind-speed");
 var currentUvindex= $("#uv-index");
 
+//create empty divs to populate results 
 function onPageLoad(){
     var parent_div = document.getElementById("parent-div");
     var top_div = document.createElement('div')
@@ -40,6 +42,7 @@ function onPageLoad(){
     }
 }
 
+//obtain UV information
 function uvInfo(longitude,latitude){
     var uvqURL="https://api.openweathermap.org/data/2.5/uvi?appid="+ APIKey+"&lat="+latitude+"&lon="+longitude;
     $.ajax({ url:uvqURL, }).then(function(response){ $(currentUvindex).html(response.value);
@@ -50,6 +53,7 @@ function uvInfo(longitude,latitude){
             });
 }
     
+// add previously stored data on page refresh if it exists 
 function firstload (){
     if (localStorage.getItem("cityname")){
         onPageLoad();
@@ -58,12 +62,13 @@ function firstload (){
 
 firstload();
 
+// click events 
 $("#search-button").on("click",WeatherPresentation);
 $(document).on("click",PastHistory);
 $(window).on("load",LastItem);
 $("#clear-history").on("click",RemoveAllHistory);
 
-
+//Main Weather API to get five day forecast 
 function forecast(cityid){
     var dayover= false;
     var queryforcastURL="https://api.openweathermap.org/data/2.5/forecast?id="+cityid+"&appid="+APIKey;
@@ -87,6 +92,7 @@ function forecast(cityid){
     });
 }
 
+//get past history
 function PastHistory(event){
     var liEl=event.target;
     if (event.target.matches("li")){
@@ -96,6 +102,7 @@ function PastHistory(event){
 
 }
 
+//add and modify list items 
 function LastItem(){
     $("ul").empty();
     var SearchedCity = JSON.parse(localStorage.getItem("cityname"));
@@ -113,6 +120,7 @@ function LastItem(){
 
 }
 
+//present the weather info to user
 function WeatherPresentation(event){
     event.preventDefault();
     if(document.getElementById("future-weather") == null){ onPageLoad()
@@ -123,12 +131,14 @@ function WeatherPresentation(event){
     }
 }
 
+//remove all history 
 function RemoveAllHistory(event){
     event.preventDefault();
     SearchedCity=[];
     window.localStorage.clear();
     document.location.reload();
 }
+//current forecast
 function Day0Forecast(city){
     var queryURL= "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + APIKey;
     $.ajax({
